@@ -6,6 +6,8 @@
       <% end %>
     </ul>
   <% end %>
+  <%= f.label :title, "タイトル" %>
+  <%= f.text_field :title %>
   <%= f.label :content, "メッセージ" %>
   <%= f.text_field :content %>
   <%= f.submit "投稿" %>

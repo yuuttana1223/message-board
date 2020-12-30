@@ -33,6 +33,9 @@ class MessagesController < ApplicationController
   end
 
   def update
+    
+    binding.pry
+    
     if @message.update(message_params)
       flash[:success] = 'Message は正常に更新されました'
       # message_url(@message.id)も可

@@ -63,3 +63,4 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # add
 gem "kaminari"
+gem "pry-byebug", group: :development

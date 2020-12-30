@@ -19,13 +19,13 @@ class MessagesController < ApplicationController
       # { success: 'Message が正常に投稿されました' } という形で保存
       flash[:success] = 'Message が正常に投稿されました'
       # HTTP リクエストを発生
-      # @messageだけでも可 (urlは絶対パス)
-      redirect_to message_url(@message.id)
+      # message_url(@message.id)も可 (urlは絶対パス)
+      redirect_to @message
     else 
       flash.now[:danger] = 'Message が投稿されませんでした'
       # HTTP リクエストを発生させない
-      # 'new', :newでも可
-      render new_message_path
+      # 'new'または new_message_pathでも可
+      render :new
     end
   end
 
@@ -35,12 +35,12 @@ class MessagesController < ApplicationController
   def update
     if @message.update(message_params)
       flash[:success] = 'Message は正常に更新されました'
-      # @messageだけでも可
-      redirect_to message_url(@message.id)
+      # message_url(@message.id)も可
+      redirect_to @message
     else 
       flash.now[:danger] = 'Message は更新されませんでした'
-      # 'edit', :editでも可
-      redirect_to edit_message_url(@message.id)
+      # 'edit', でも可, edit_message_path(@message.id)はできなかった?
+      render :edit
     end
   end
 

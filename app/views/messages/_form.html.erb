@@ -1,14 +1,27 @@
-<%= form_with(model: message, local: true) do |f| %>
-  <% if message.errors.any? %>
-    <ul>
-      <% message.errors.messages[:content].each do |msg| %>
-        <li><%= msg %></li>
+<div class="row">
+  <div class="col-6">
+    <%= form_with(model: message, local: true) do |f| %>
+      <% if message.errors.any? %>
+        <div id="error_explanation" class="alert alert-warning">
+          <ul>
+            <% message.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-    </ul>
-  <% end %>
-  <%= f.label :title, "タイトル" %>
-  <%= f.text_field :title %>
-  <%= f.label :content, "メッセージ" %>
-  <%= f.text_field :content %>
-  <%= f.submit "投稿" %>
-<% end %>
+
+      <div class="form-group">
+        <%= f.label :title, "タイトル" %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :content, "メッセージ" %>
+        <%= f.text_field :content, class: "form-control" %>
+      </div>
+
+      <%= f.submit "投稿", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
